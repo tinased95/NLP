@@ -1,0 +1,115 @@
+maxIter = 20 and Speakers = 32
+M: 1 	 Accuracy:  0.9688
+M: 2 	 Accuracy:  1.0000
+M: 3 	 Accuracy:  1.0000
+M: 5 	 Accuracy:  1.0000
+M: 7 	 Accuracy:  1.0000
+M: 8 	 Accuracy:  1.0000
+M: 10 	 Accuracy:  1.0000
+M: 12 	 Accuracy:  1.0000
+M: 18 	 Accuracy:  1.0000
+M: 25 	 Accuracy:  1.0000
+
+Discussion:
+Although in our case, decreasing the M only had a minimal effect on the accuracy, it is true that as the number of
+mixture components (M) decrease, the accuracy of the classification should also decrease, since a small value
+of M may cause the model to not fit the dataset completely and accurately.
+Another interpretation of the results is that we are able to model each of the speaker's latent utterance distributions
+with bimodal distributions which are quite different from each other and still get the 100% accuracy.
+------------------------------------------------------------------------------------------------------------------------
+
+Let's look at examining the maxIter this time:
+
+M = 8 and Speakers = 32
+maxIter: 0 	 Accuracy:  0.9688
+maxIter: 5 	 Accuracy:  1.0000
+maxIter: 10  Accuracy:  1.0000
+maxIter: 15  Accuracy:  1.0000
+maxIter: 20  Accuracy:  1.0000
+maxIter: 25  Accuracy:  1.0000
+maxIter: 30  Accuracy:  1.0000
+
+Discussion:
+As MaxItr decreases, the accuracy decreases, this is because with too few iterations, the model is not fully trained
+against the training data, which makes it more likely to make mistakes.
+The classifier quickly reaches the maxima accuracy between the 0-th and 5-th training iteration. This suggests that the
+model converges very fast to a minima.
+------------------------------------------------------------------------------------------------------------------------
+Let's look at examining the number of speakers this time:
+
+M = 8 and maxIter = 20
+Total Speakers: 1 	 Accuracy:  1.0000
+Total Speakers: 5 	 Accuracy:  1.0000
+Total Speakers: 8 	 Accuracy:  1.0000
+Total Speakers: 15 	 Accuracy:  1.0000
+Total Speakers: 20 	 Accuracy:  1.0000
+Total Speakers: 25 	 Accuracy:  1.0000
+Total Speakers: 32 	 Accuracy:  1.0000
+
+Discussion:
+If we only change the number of speakers for both training and testing, there is no effect on the accuracy of the model.
+This is with the assumption that there is no unknown speakers.
+
+In my opinion, as the number of speakers increases, the accuracy should decrease, because the model is
+more likely to make mistakes if the number of classes are higher. If we had more speakers to try the model for, this
+would be the potetial trend.
+------------------------------------------------------------------------------------------------------------------------
+Lets change the number of known training speakers this time:
+
+M = 8 and maxIter = 20 and totalSpeakers = 32
+Known Training Speakers: 4 	    Accuracy:  0.125
+Known Training Speakers: 8 	    Accuracy:  0.25
+Known Training Speakers: 16 	Accuracy:  0.5
+Known Training Speakers: 24 	Accuracy:  0.75
+Known Training Speakers: 32 	Accuracy:  1.0000
+
+As the number of unknown speakers increases (the known speakers decreases), the classification accuracy decreases by a
+noticeable amount. This makes sense since the model trained only contains the information of each of the known speakers.
+Therefore, it would assign a "known speaker name" to an unknown speaker during the classification process. Thus, the
+classification accuracy would not be good.
+It should be noted that the accuracy scores are equal to (S / 32).
+
+------------------------------------------------------------------------------------------------------------------------
+Additional Questions
+
+Question 1: How might you improve the classification accuracy of the Gaussian mixtures, without adding more
+training data?
+
+Answer 1:
+    1. Increasing the number of maxIter: by doing so, the model can learn more information from the trainng data,
+    although we need to be careful about the overfitting issue, since knowing the training set in a very detailed way
+    may cause the model to not generalize well for unseen data.
+
+    2. Increasing the number of Gaussian mixture models: M should be tuned such that it equals the number of clusters
+    in the latent distribution. This will ensure that the latent distribution can be approximated accurately while
+    minimizing the chances of over-fitting. However, since the properties of the latent distribution are unknown, trial
+    and error must be used to find ideal M.
+
+    3. Trying different parameter initializations: It's possible for the EM algorithm to get stuck in a local maxima.
+    and in this way, we can make sure that the chosen paramteres are the optimal ones.
+                                 ----------------------------------------
+
+Question 2: When would your classifier decide that a given test utterance comes from none of the trained speaker
+models, and how would your classifier come to this decision?
+
+Answer 2:
+
+If all of the GMM models produce likelihoods very low to zero in other words log-likelihoods of -infinity, it means that
+it is impossible that the speaker tested is one of the trained speakers. This situation would occur only when the bm
+values are all zeros since each likelihood is computed by the sum of the weighted bws.
+Perhaps a threshold-based algorithm could approximate the theoretical algorithm of having all GMM's output 0 likelihood
+(-infinity log-likelihood). If the log-likelihood produced by the test data is substantially below this threshold, we
+may consider the test-data to be "unseen".
+                                 ----------------------------------------
+Question 3: Can you think of some alternative methods for doing speaker identification that don't use Gaussian
+mixtures?
+
+Answer 3:
+    1. K nearest neighbours (KNN)
+    2. Convolutional Neural Networks (CNN)
+    3. A recent concept is to use d-vectors which is the output of a neural network model that specifies a speaker with a
+    d-dimensional vector. For testing if an utterence is similar to a speaker we can then find the similarity scores
+    between the two d-vector embeddings and if it is over a certain threshold we could say that it comes from the same
+    speaker.
+    4. Another alternative is K-means: Running K-means on the utterance data to find the (approximate) k-cluster centers
+    for k-many speakers. For a new utterance, finding the closest cluster center which represents the speaker.
