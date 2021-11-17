@@ -1,0 +1,92 @@
+Results for LogisticRegression:
+        Accuracy: 0.3866
+        Recall: [0.3576, 0.3332, 0.5508, 0.3056]
+        Precision: [0.391, 0.3595, 0.4163, 0.3653]
+        Confusion Matrix: 
+[[ 707  446  455  369]
+ [ 494  668  479  364]
+ [ 232  327 1101  339]
+ [ 375  417  610  617]]
+
+
+Results for QuadraticDiscriminantAnalysis:
+	Accuracy: 0.3232
+	Recall: [0.6014, 0.3406, 0.2586, 0.0976]
+	Precision: [0.3064, 0.2941, 0.4287, 0.3333]
+	Confusion Matrix: 
+[[1189  491  177  120]
+ [ 969  683  240  113]
+ [ 755  566  517  161]
+ [ 968  582  272  197]]
+
+ Results for NearestCentroid:
+        Accuracy: 0.2940
+        Recall: [0.0121, 0.7736, 0.3817, 0.0069]
+        Precision: [0.3, 0.2722, 0.3544, 0.2029]
+        Confusion Matrix: 
+[[  24 1503  433   17]
+ [  24 1551  417   13]
+ [  14 1197  763   25]
+ [  18 1447  540   14]]
+ 
+
+ Results for KNeighborsClassifier with k=5:
+	Accuracy: 0.3093
+	Recall: [0.3571, 0.2688, 0.4232, 0.1897]
+	Precision: [0.2879, 0.2809, 0.3518, 0.3129]
+	Confusion Matrix: 
+[[706 490 503 278]
+ [676 539 498 292]
+ [455 427 846 271]
+ [615 463 558 383]]
+
+Results for KNeighborsClassifier with k=10:
+	Accuracy: 0.3182
+	Recall: [0.3703, 0.3202, 0.3817, 0.2026]
+	Precision: [0.309, 0.2802, 0.3813, 0.3055]
+	Confusion Matrix: 
+[[732 560 391 294]
+ [658 642 385 320]
+ [392 528 763 316]
+ [587 561 462 409]]
+
+Results for KNeighborsClassifier with k=15:
+	Accuracy: 0.3166
+	Recall: [0.3419, 0.3087, 0.4147, 0.2026]
+	Precision: [0.3044, 0.2782, 0.3887, 0.2878]
+	Confusion Matrix: 
+[[676 571 396 334]
+ [630 619 406 350]
+ [347 495 829 328]
+ [568 540 502 409]]
+
+Results for KNeighborsClassifier with k=20:
+	Accuracy: 0.3242
+	Recall: [0.3475, 0.3202, 0.4282, 0.2026]
+	Precision: [0.3144, 0.2896, 0.3902, 0.2913]
+	Confusion Matrix: 
+[[687 557 414 319]
+ [608 642 429 326]
+ [332 461 856 350]
+ [558 557 495 409]]
+
+Results for KNeighborsClassifier with k=25:
+	Accuracy: 0.3237
+	Recall: [0.3364, 0.3217, 0.4342, 0.2041]
+	Precision: [0.3119, 0.2896, 0.388, 0.2934]
+	Confusion Matrix: 
+[[665 558 428 326]
+ [594 645 432 334]
+ [327 472 868 332]
+ [546 552 509 412]]
+
+Results for KNeighborsClassifier with k=30:
+	Accuracy: 0.3157
+	Recall: [0.3799, 0.2369, 0.4457, 0.2026]
+	Precision: [0.2936, 0.2809, 0.3836, 0.2864]
+	Confusion Matrix: 
+[[751 455 442 329]
+ [731 475 464 335]
+ [416 337 891 355]
+ [660 424 526 409]]
+

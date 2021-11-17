@@ -1,0 +1,29 @@
+5 p-values: [0.9108, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0003, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1966, 0.0, 0.0158, 0.0, 0.0, 0.0001, 0.0003, 0.0, 0.0243, 0.0, 0.0, 0.0004, 0.0, 0.0, 0.0, 0.0, 0.0219, 0.0, 0.3272, 0.0, 0.0, 0.006, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0026, 0.0, 0.0, 0.0, 0.0158, 0.1664, 0.0223, 0.0164, 0.0039, 0.0, 0.0, 0.0353, 0.0, 0.0, 0.0509, 0.0057, 0.1043, 0.0, 0.0431, 0.0, 0.0, 0.0, 0.6551, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0032, 0.0008, 0.0, 0.0004, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0343, 0.0137, 0.0, 0.0122, 0.0, 0.0, 0.0, 0.0, 0.3522, 0.0, 0.0, 0.0001, 0.0114, 0.0, 0.1877, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0008, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0005, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2774, 0.0, 0.0, 0.0, 0.001, 0.0224, 0.0, 0.0, 0.0, 0.0, 0.7108, 0.0, 0.0, 0.0, 0.0046, 0.0001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+50 p-values: [0.9108, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0003, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1966, 0.0, 0.0158, 0.0, 0.0, 0.0001, 0.0003, 0.0, 0.0243, 0.0, 0.0, 0.0004, 0.0, 0.0, 0.0, 0.0, 0.0219, 0.0, 0.3272, 0.0, 0.0, 0.006, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0026, 0.0, 0.0, 0.0, 0.0158, 0.1664, 0.0223, 0.0164, 0.0039, 0.0, 0.0, 0.0353, 0.0, 0.0, 0.0509, 0.0057, 0.1043, 0.0, 0.0431, 0.0, 0.0, 0.0, 0.6551, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0032, 0.0008, 0.0, 0.0004, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0343, 0.0137, 0.0, 0.0122, 0.0, 0.0, 0.0, 0.0, 0.3522, 0.0, 0.0, 0.0001, 0.0114, 0.0, 0.1877, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0008, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0005, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2774, 0.0, 0.0, 0.0, 0.001, 0.0224, 0.0, 0.0, 0.0, 0.0, 0.7108, 0.0, 0.0, 0.0, 0.0046, 0.0001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Accuracy for 1k: 0.3205
+Accuracy for full dataset: 0.3432
+Chosen feature intersection: [11, 171]
+Top-5 at higher: [  9  11 149 159 171]
+
+a) Best Features are number of adverbs (11) and one of the LIWC features called receptiviti_work_oriented (171).
+Usage of adverbs probably indicates writing ability and amount of intelligence.
+These language categories are able to show one's emotional and cognitive tendencies. Therefore, these language categories
+are able to express the political persuasion class.
+
+b) The p-values for top features selected for 32K case are all zeros, but for 1K case, the p-values are small
+but non-zero.
+The p-values are generally lower given more data, because the p-values for all features are getting lower given
+more data, therefore, all features contributes more on classification.
+This makes sense because the accuracy gets higher when using more training samples.
+The p-value of a feature is inversely proportional to the predictive power of that feature. A classifier with more
+training data has more information to decide the predictive power of various features.
+
+c) Number of common nouns (9), number of adverbs (11), receptiviti_intellectual (149),
+receptiviti_power_driven (159), and receptiviti_work_oriented (171) are the top 5 features.
+Number of common nouns might be used to find the length of their comments.
+Number of adverbs might be used to indicate the writing ability and amount of intelligence.
+receptiviti_work_oriented might be used to criticize or prize if a politician follows his promise;
+receptiviti_power_driven might be used to criticize the direction and power of a politician;
+receptiviti_intellectual might be used to evaluate the intelligence of a politician.
+Therefore, all these values in selected training set may be useful to detect political persuasion of a sentence.
+

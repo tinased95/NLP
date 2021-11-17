@@ -1,0 +1,4 @@
+
+python3.7 a1_preproc.py 1006148937 -o preproc.json
+python3.7 a1_extractFeatures.py -i preproc.json -o feats.npz
+python3.7 a1_classify.py -i feats.npz -o results/

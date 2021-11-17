@@ -1,0 +1,75 @@
+import datetime
+import sys
+from scipy.io import wavfile as wav
+from pydub import AudioSegment
+import matplotlib.pyplot as plt
+import re
+import json
+from pydub import silence
+
+time = "1566313132106"
+path = "audio_1566312268167.wav"
+JSON_PATH = '216_1566312445287.json'
+
+
+def read_wave(path, start, end):
+    audio = AudioSegment.from_wav(path)
+    start_audio_time = int(get_start_time(path))
+    start -= start_audio_time
+    end -= start_audio_time
+    speech_segment = audio[start:end]
+    speech_segment.export('speech_segment.wav', format="wav")
+
+
+def plot_wave(path):
+    rate, data = wav.read(path)
+    plt.plot(data)
+    plt.show()
+
+
+def get_start_time(path):
+    try:
+        start_time = re.search('audio_(.+?).wav', path).group(1)
+    except AttributeError:
+        # AAA, ZZZ not found in the original string
+        start_time = 'Error finding start time'  # apply your error handling
+    return start_time
+
+
+def unix_timestamp_converter(time):
+    return datetime.datetime.fromtimestamp(int(time)/1000).strftime(f'%Y-%m-%d %H:%M:%S')
+
+
+def parse_json(json_path):
+    with open(json_path) as f:
+        data = json.load(f)
+    json_string = json.dumps(data, indent=4, sort_keys=True)
+
+    for event in data['tasks']:
+        if event['events'][0]['event'] == 'Scripted Speech Session_start':
+            print(event['events'][0]['timestamp'])
+        if event['events'][1]['event'] == 'Scripted Speech Session_stop':
+            print(event['events'][1]['timestamp'])
+
+        if event['events'][0]['event'] == 'Scripted Speech Session II_start':
+            print(event['events'][0]['timestamp'])
+        if event['events'][1]['event'] == 'Scripted Speech Session II_stop':
+            print(event['events'][1]['timestamp'])
+
+        if event['events'][0]['event'] == 'Spontaneous Speech Session_start':
+            print(event['events'][0]['timestamp'])
+        if event['events'][1]['event'] == 'Spontaneous Speech Session_stop':
+            print(event['events'][1]['timestamp'])
+
+
+def main():
+    # read_wave(path, int("1566313011083"), int("1566313132106"))
+    audio = AudioSegment.from_wav('speech_segment.wav')
+    silencee = silence.split_on_silence(audio, min_silence_len=10, silence_thresh=-20)
+    print(silencee)
+    # plot_wave('speech_segment.wav')
+    # parse_json(JSON_PATH)
+
+
+if __name__ == '__main__':
+    main()

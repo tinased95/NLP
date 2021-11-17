@@ -1,0 +1,14 @@
+1000: 0.3331
+5000: 0.3668
+10000: 0.3809
+15000: 0.3791
+20000: 0.3739
+
+"As the number of training samples increases the value of the accuracy increases
+until a saturation point, and then after that it tends to decrease.
+The reason is that the smaller sample size of dataset is not able to capture the important aspects of each class
+and can cause mis-classification and underfitting.
+As the number of training samples increases, the characteristics of each class would be highlighted and enhance the
+performance of the classification.
+The accuracy is expected to decrease after some point because the model would be more complex and tend to overfit
+the data."
